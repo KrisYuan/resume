@@ -22,14 +22,14 @@ var education = {
         "degree": "Master",
         "majors": ["Software Engineering"],
         "dates": "2016.2 - till now",
-        "url": ""
+        "url": "http://www.sjtu.edu.cn"
     }, {
         "name": "Shanghai University",
         "location": "Shanghai, China",
         "degree": "Bachelor",
         "majors": ["Automatization"],
         "dates": "2010.9 - 2014.7",
-        "url": ""
+        "url": "http://www.shu.edu.cn"
     }, ],
     "onlineCourses": [{
         "title": "Machine Learning",
@@ -124,6 +124,9 @@ work.display = function() {
         var formattedDates0 = HTMLworkDates.replace(data, work.jobs[i].dates);
         $(".work-entry:last").append(formattedDates0);
 
+        var formattedWorkLocation = HTMLworkLocation.replace(data, work.jobs[i].location);
+        $(".work-entry:last").append(formattedWorkLocation);
+
         var formattedDescription = HTMLworkDescription.replace(data, work.jobs[i].description);
         $(".work-entry:last").append(formattedDescription);
     }
@@ -156,6 +159,7 @@ education.display = function() {
         $("#education").append(HTMLschoolStart);
 
         var formattedName = HTMLschoolName.replace(data, education.schools[k].name);
+        formattedName = formattedName.replace("#",education.schools[k].url);
         $(".education-entry:last").append(formattedName);
 
         var formattedDegree = HTMLschoolDegree.replace(data, education.schools[k].degree);
@@ -184,6 +188,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedDates3);
 
         var formattedURL = HTMLonlineURL.replace(data, education.onlineCourses[l].url);
+        formattedURL = formattedURL.replace("#",education.onlineCourses[l].url);
         $(".education-entry:last").append(formattedURL);
 
     }
